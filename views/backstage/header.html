@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class=" js csstransforms3d">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>公共头部</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/page.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="super-header clearfix">
+    <h2>网站后台管理系统</h2>
+    <div class="head-right">
+        <i class="ico-user"></i>当前用户：
+        <div class="userslideDown">
+            <a href="javascript:;" class="superUser">Admin<i class="ico-tri"></i></a>
+            <div class="slidedownBox">
+                <ul>
+                    <li><a href="change_psw.html" target="Mainindex">修改密码</a></li>
+                    <li><a href="loginb.html" target="_parent">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('.userslideDown').mouseover(function () {
+            $(this).children('.superUser').addClass('tri');
+            $('.slidedownBox').addClass('anmpopup');
+            $('#Pubheader', parent.document).css('height', 'auto');
+        });
+        $('.userslideDown').mouseout(function () {
+            $(this).children('.superUser').removeClass('tri');
+            $('.slidedownBox').removeClass('anmpopup');
+            $('#Pubheader', parent.document).css('height', '86px');
+        });
+    })
+</script>
+</body>
+</html>
