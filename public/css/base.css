@@ -6,7 +6,7 @@ body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fo
 }
 
 body, button, input, select, textarea {
-    font: 12px 'Microsoft Yahei', tahoma, Srial, helvetica, sans-serif;
+    font: 12px 'Microsoft Yahei', tahoma, Arial, helvetica, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -487,4 +487,22 @@ select:focus,
 
 .select_ui select option {
     padding: 5px 10px;
+}
+
+.add_button {
+    height: 31px;
+    width: 109px;
+    background: #00B38B;
+    background-image: url(/images/ico_add_button.png);
+    background-position: 13px 8px;
+    position: relative;
+    background-repeat: no-repeat;
+    text-indent: 36px;
+    display: block;
+    float: left;
+    line-height: 31px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    color: #fff;
+    margin-right: 1.8%;
 }

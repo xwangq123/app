@@ -1,0 +1,15 @@
+.type-Main-cont {
+    height: 31px;
+    padding: 5px;
+    margin:0 2%;
+}
+
+.type-Main-cont .input_add_type {
+    float: left;
+    border: 1px solid grey;
+    width: 200px;
+    height: 25px;
+    margin: 2px 15px ;
+    padding:0 10px;
+    color:#545454
+}
