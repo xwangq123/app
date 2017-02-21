@@ -1,5 +1,4 @@
-var pool = require('../utils/dbhelp.js');
-var mysqlClient = require('../utils/mysqlclient.js').init();
+var mysqlPool = require('../utils/dbhelp.js');
 
 function ArticleCategory(articleCategory) {
     this.id = articleCategory.id;
@@ -9,25 +8,14 @@ function ArticleCategory(articleCategory) {
 };
 
 ArticleCategory.insert = function (categoryName, callback) {
-    mysqlClient.query("select * from ArticleCategory", [], (err, res) => {
-
-    });
-
     var sql = 'insert into ArticleCategory(NAME,ARTICLE,STATUS) value(?,0,1)';
-    pool.getConnection((err, connection) => {
-        connection.query(sql, [categoryName], function (err, result) {
-            callback(err, result)
-        });
+    mysqlPool.query(sql, [categoryName], function (err, result) {
+        callback(err, result);
     });
 };
 
 ArticleCategory.findByName = function (categoryName, callback) {
-    var sql = 'select * from ArticleCategory where name=?';
-    pool.getConnection((err, connection) => {
-        connection.query(sql, [categoryName], function (err, result) {
-            callback(err, result)
-        });
-    });
+
 };
 
 module.exports = ArticleCategory;

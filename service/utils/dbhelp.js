@@ -1,42 +1,29 @@
+var config = require('../config');
 var mysql = require('mysql');
+var mysqlPool = module.exports;
+var _pool = null;
 
-
-var pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '1359764',
-    database: 'my_schema',
-    port: 3306,
-    queueLimit: 8
-});
-
-var config = {
-    host: 'localhost',
-    user: 'root',
-    password: '1359764',
-    database: 'my_schema',
-    port: 3306
+mysqlPool.init = function () {
+    if (!_pool) {
+        _pool = mysql.createPool(config.mysql);
+    }
+    return mysqlPool;
 };
-/*
 
- var execute = function (queryFun) {
- var connection = mysql.createConnection(config);
+mysqlPool.query = function (sql, args, callback) {
+    _pool.getConnection((err, connection) => {
+        if (err) {
+            console.log('getConnection err!');
+            return;
+        }
+        connection.query(sql, args, (err, result) => {
+            _pool.releaseConnection(connection);
+            callback(err, result)
+        });
+    });
+};
 
- connection.connect((err) => {
- if (err) {
- console.log(err);
- return
- }
- });
+mysqlPool.end = function () {
+    _pool.end();
+}
 
- queryFun(connection);
-
- connection.end((err) => {
- if (err) {
- return;
- }
- })
- };
- */
-
-module.exports = pool;
