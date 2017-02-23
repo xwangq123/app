@@ -4,7 +4,7 @@ function handleError(err, req, res) {
         console.error(req.body);
         console.error(req.query);
         console.error(err);
-        res.status(500);
+        res.status(200);
         res.json({
             status: 0,
             msg: "Database Error ... ",

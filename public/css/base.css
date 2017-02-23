@@ -419,9 +419,8 @@ input {
 }
 
 /*select*/
-
-select,
-.select_ui {
+/*
+select {
     border: 1px solid #d8d8d8;
     vertical-align: middle;
     display: inline-block;
@@ -429,64 +428,15 @@ select,
     background: #fff;
     text-align: left;
     cursor: inherit;
-    width: 162px;
-    height: 22px;
+    width: 100px;
+    height: 30px;
     padding: 5px 0;
     text-indent: 15px;
 }
+*/
 
-select:focus,
-.select_focus_ui {
+select:focus {
     border-color: #d8d8d8;
-}
-
-.select_ui .select_arrow {
-    width: 9px;
-    height: 5px;
-    background: url(../../views/temp/images/ico_fabu_other.png) no-repeat -2px 0;
-    position: absolute;
-    overflow: hidden;
-    display: block;
-    right: 13px;
-    top: 14px;
-}
-
-.select_ui .select_text_ui {
-    vertical-align: baseline;
-    white-space: nowrap;
-    line-height: normal;
-    margin-right: 20px;
-    overflow: hidden;
-    display: block;
-    color: inherit;
-    color: #454545;
-}
-
-.select_ui select,
-.select_ui .select_poswrap {
-    position: absolute;
-    padding: 0;
-    border: 0;
-    margin: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    top: 0;
-}
-
-.select_ui select {
-    filter: alpha(opacity=0);
-    box-sizing: border-box;
-    background: #fff;
-    min-width: 100%;
-    color: inherit;
-    font: inherit;
-    height: 100%;
-    opacity: 0;
-}
-
-.select_ui select option {
-    padding: 5px 10px;
 }
 
 .add_button {

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class=" js csstransforms3d">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>文章发布</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/page.css">
+    <link rel="stylesheet" href="/css/article_category.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+</head>
+
+<body style="background: #f6f5fa;">
+
+<div class="super-content RightMain" id="RightMain">
+    <div class="ctab-Main">
+        <div class="ctab-Main-title">
+            <ul class="clearfix">
+                <li><a href="/articleManage/getArticleManage">文章管理</a></li>
+                <li class="cur"><a href="/articleManage/getArticleCategory">类别管理</a></li>
+                <li><a href="/articleManage/articleAdd">写新文章</a></li>
+            </ul>
+        </div>
+
+        <div class="ctab-Mian-cont">
+            <div class="Mian-cont-wrap">
+                <div class="defaultTab-T">
+                    <table border="0" cellspacing="0" cellpadding="0" class="defaultTable">
+                        <tbody>
+                        <tr>
+                            <th class="t_1">类别</th>
+                            <th class="t_2">文章</th>
+                            <th class="t_4">操作</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <%   for(var i=0;i
+                <data.length
+                        ;i++){%>
+                    <table border="0" cellspacing="0" cellpadding="0" class="defaultTable defaultTable2">
+                        <tbody>
+                        <tr>
+                            <td class="t_1"><%=data[i].NAME%></td>
+                            <td class="t_2"><a href="#"><%=data[i].ARTICLE%></a></td>
+                            <td class="t_4">
+                                <div class="btn">
+                                    <a href="#" class="modify">修改</a>
+                                    <a href="/articleManage/deleteById?id=<%=data[i].ID%>" class="delete">删除</a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <%}%>
+            </div>
+        </div>
+        <div class="type-Main-cont">
+            <input type="text" id="txtCategory" placeholder="新的类别" class="input_add_type">
+            <a href="javascript:add_category()" class="add_button">添加分类</a>
+        </div>
+    </div>
+    <script type="text/javascript" src="/js/articleManage.js"></script>
+</div>
+</body>
+</html>

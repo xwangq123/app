@@ -114,10 +114,10 @@ DROP TABLE IF EXISTS KEYVALUEITEM;
 CREATE TABLE KEYVALUEITEM (
    ID                   INTEGER                        NOT NULL  AUTO_INCREMENT,
    CATEGORY				VARCHAR(50)					   NOT NULL,#分类
-   NAME                 VARCHAR(50)                   NULL,#名称
+   NAME                 VARCHAR(50)                    NULL,#名称
    CAPTION              VARCHAR(100)                   NULL,#说明
    KEYID                INT 	                       NULL,#键
-   VALUE                VARCHAR(50)                   NULL,#值
+   VALUE                VARCHAR(50)                    NULL,#值
    STATUS               INT                            NULL,#状态
    CONSTRAINT PK_KEYVALUEITEM PRIMARY KEY (ID)
 );
@@ -128,10 +128,42 @@ DROP TABLE IF EXISTS ARTICLECATEGORY;
 /*==============================================================*/
 CREATE TABLE ARTICLECATEGORY (
    ID                   INTEGER                        NOT NULL  AUTO_INCREMENT,
-   NAME                 VARCHAR(50)                    NULL,#名称
-   Article               INT 	                       NULL,#文章
-   STATUS               INT                            NULL,#状态
+   NAME                 VARCHAR(50)                    NOT NULL,#名称
+   Article               INT 	                       NOT NULL,#文章
+   STATUS               INT                            NOT NULL,#状态
+   CREATETIME			DATETIME					   NOT NULL,
    CONSTRAINT PK_ARTICLECATEGORY PRIMARY KEY (ID)
+);
+
+
+DROP TABLE IF EXISTS ARTICLE;
+/*==============================================================*/
+/* TABLE: Article 文章类别                                    */
+/*==============================================================*/
+CREATE TABLE ARTICLE (
+   ID                   INTEGER                        NOT NULL  AUTO_INCREMENT,
+   TITLE                VARCHAR(200)                   NOT NULL,#标题
+   READNUMBER			INT							   NOT NULL,#阅读数量
+   SUMMARY				TEXT(400)                      NULL,#摘要
+   CONTENT				TEXT   						   NOT NULL,#内容
+   TYPE					VARCHAR(10)                    NOT NULL,#类型
+   STATUS               INT                            NOT NULL,#状态
+   CREATETIME			DATETIME					   NOT NULL,
+   CREATENAME			VARCHAR(50)                    NOT NULL,
+   MODIFIERNAME			VARCHAR(50)					   NULL,
+   MODIFYTIME			DATETIME					   NULL,
+   CONSTRAINT PK_ARTICLE PRIMARY KEY (ID)
+);
+
+DROP TABLE IF EXISTS ARTICLE;
+/*==============================================================*/
+/* TABLE: Article 文章类别关系                                    */
+/*==============================================================*/
+CREATE TABLE ARTICLECATEGORYRELATED (
+   ID                   INTEGER                        NOT NULL  AUTO_INCREMENT,
+   ARTICLEID		    INT 						   NOT NULL,
+   ARTICLECATEGORYID    INT							   NOT NULL,
+   CONSTRAINT PK_ARTICLECATEGORYRELATED PRIMARY KEY (ID)
 );
 
 

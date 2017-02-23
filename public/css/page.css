@@ -711,8 +711,8 @@
 }
 
 .saveBtn {
-    width: 117px;
-    height: 42px;
+    width: 80px;
+    height: 30px;
     background: #00B38B;
     color: #fff;
     font-size: 16px;
@@ -939,7 +939,7 @@ a.colu-xg:hover {
 
 .publishArt h4 {
     font-weight: normal;
-    font-size: 22px;
+    font-size: 18px;
     display: block;
     color: #454545;
     margin: 0 2%;
@@ -947,28 +947,40 @@ a.colu-xg:hover {
 }
 
 .pubMain {
-    margin: 0 2%;
+    margin: 0 3%;
 }
 
 .pubMain h5 {
     display: block;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 12px;
     color: #454545;
     padding: 20px 0 10px;
 }
 
 .pubtitle {
     padding-top: 25px;
-    font-size: 16px;
+    font-size: 12px;
     color: #454545;
 }
 
-.pub-txt-bar .shuruTxt {
-    width: 60%;
+.pub-txt-bar {
+    display: inline-block;
+    width: 100%;
+}
+
+.pub-txt-bar select {
     border: 1px solid #d8d8d8;
-    padding: 10px 10px;
-    height: 17px;
+    width: 70px;
+    height: 30px;
+    padding: 2px 0;
+    text-indent: 8px;
+}
+
+.pub-txt-bar .shuruTxt {
+    width: 500px;
+    border: 1px solid #d8d8d8;
+    height: 28px;
 }
 
 .pub-addflbtn {
@@ -1115,18 +1127,19 @@ a.colu-xg:hover {
 }
 
 .pub-area-bar textarea {
-    width: 60%;
+    width: 100%;
     border: 1px solid #d8d8d8;
-    padding: 5px 10px;
-    height: 80px;
+    height: 70px;
 }
 
 .pub-article-cont {
-    width: 98%;
+    width: 100%;
 }
 
 .pub-btn {
-    padding: 55px 0 86px;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0 20px;
 }
 
 .addSortBox {
@@ -1165,29 +1178,6 @@ a.colu-xg:hover {
     padding: 0 0 29px 0;
 }
 
-.backlistBtn {
-    background: #fff;
-    border: 1px solid #d8d8d8;
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    position: absolute;
-    top: 21px;
-    right: 19px;
-    width: 109px;
-    height: 31px;
-    line-height: 31px;
-}
-
-.backlistBtn i.ico-back {
-    display: block;
-    float: left;
-    background: url(/images/ico_fabu_other.png) no-repeat 0 -154px;
-    width: 15px;
-    height: 15px;
-    margin: 8px 6px 0 15px;
-}
-
 .hdColumnbox li.li-1 {
     width: 140px;
 }
@@ -1223,7 +1213,7 @@ a.colu-xg:hover {
 }
 
 .hd-start-end ul li .pub-txt-bar .shuruTxt {
-    width: 80%;
+    width: 100%;
     text-align: center;
 }
 
@@ -2620,4 +2610,15 @@ span.label {
     height: 27px;
     padding: 5px 2%;
     width: 96%;
+}
+
+.pub-cbx {
+    width: 100%;
+    border: 1px solid #cdcdcd;
+    display: inline-block;
+}
+
+.pub-cbx input {
+    margin: 10px 5px  10px 20px;
+
 }
