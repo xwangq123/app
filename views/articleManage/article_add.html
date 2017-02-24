@@ -12,7 +12,6 @@
     <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
 </head>
-
 <body style="background: rgb(246, 245, 250);">
 <div class="super-content">
     <div class="superCtab">
@@ -21,12 +20,12 @@
                 <form action="" method="post">
                     <h5 class="pubtitle">文章标题</h5>
                     <div class="pub-txt-bar">
-                        <select name="">
-                            <option value="">原创</option>
-                            <option value="">转载</option>
-                            <option value="">翻译</option>
+                        <select id="TYPE">
+                            <option value="原创">原创</option>
+                            <option value="转载">转载</option>
+                            <option value="翻译">翻译</option>
                         </select>
-                        <input type="text" class="shuruTxt">
+                        <input type="text" id="TITLE" class="shuruTxt">
                     </div>
 
                     <h5 class="pubtitle">文章内容</h5>
@@ -38,34 +37,24 @@
                         <% for(var i=0;i
                         <data.length
                                 ;i++){%>
-                            <input type="checkbox"><label><%=data[i].NAME %></label>
+                            <input name="ARTICLE" type="checkbox" value="<%=data[i].ID %>"><label><%=data[i].NAME%></label>
                             <%}%>
                     </div>
                     <h5 class="pubtitle">摘要</h5>
                     <div class="pub-area-bar">
-                        <textarea name="" rows="" cols="3"></textarea>
+                        <textarea id="SUMMARY" rows="" cols="3"></textarea>
                     </div>
                     <div class="pub-btn">
-                        <input type="button" id="" value="发表" class="saveBtn">
+                        <input type="button" onclick="add_Article()" value="发表" class="saveBtn">
                         <input type="button" value="保存" class="saveBtn">
                         <input type="button" onclick="history.go(-1)" value="舍弃返回" class="saveBtn">
                     </div>
                 </form>
             </div>
         </div>
-
     </div>
 
 </div>
-<script type="text/javascript">
-    var ue = UE.getEditor('editor');
-    function getContentTxt() {
-        var arr = [];
-        arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
-        arr.push("编辑器的纯文本内容为：");
-        arr.push(UE.getEditor('editor').getContentTxt());
-        alert(arr.join("\n"));
-    }
-</script>
+<script src="/js/articleManage.js"></script>
 </body>
 </html>

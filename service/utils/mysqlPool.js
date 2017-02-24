@@ -22,6 +22,35 @@ mysqlPool.query = function (sql, args, callback) {
         });
     });
 };
+mysqlPool.beginTransaction = function (callback) {
+    _pool.getConnection((err, connection) => {
+        if (err) {
+            console.log('getConnection err!' + err);
+            return;
+        }
+        connection.beginTransaction((err) => {
+            if (err) {
+                throw err;
+            }
+            callback(connection, (err) => {
+                if (err) {
+                    connection.rollback(() => {
+                        throw err;
+                    });
+                }
+                connection.commit(function (err) {
+                    if (err) {
+                        connection.rollback(function () {
+                            throw err;
+                        });
+                    }
+                    console.log('success!');
+                });
+            });
+
+        });
+    });
+};
 
 mysqlPool.end = function () {
     if (_pool)

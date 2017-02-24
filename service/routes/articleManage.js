@@ -4,15 +4,6 @@ var ArticleCategory = require('../model/ArticleCategory.js');
 var Article = require('../model/Article.js');
 var response = require('../utils/response');
 
-router.post('/articleManage/insert', (req, res) => {
-    var name = req.body.name;
-    if (name.trim() == '') {
-        response.err('请输入类别名称!', res);
-    }
-    ArticleCategory.insert(name, (err, result) => {
-        response.ok(err, res, result);
-    });
-});
 
 router.get('/articleManage/getArticleCategory', (req, res) => {
     ArticleCategory.findAll((err, result) => {
@@ -38,10 +29,26 @@ router.get('/articleManage/deleteById', (req, res) => {
 
 router.get('/articleManage/articleAdd', (req, res) => {
     ArticleCategory.findAll((err, result) => {
-        console.log(result);
         res.render('articleManage/article_add', {
             data: result
         });
     });
 });
+
+router.post('/articleManage/insert', (req, res) => {
+    var name = req.body.name;
+    if (name.trim() == '') {
+        response.err('请输入类别名称!', res);
+    }
+    ArticleCategory.insert(name, (err, result) => {
+        response.ok(err, res, result);
+    });
+});
+
+router.post('/articleManage/articleInsert', (req, res) => {
+    Article.insert(req.body, (err, result) => {
+        response.ok(err, res, result);
+    });
+});
+
 module.exports = router;

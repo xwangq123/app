@@ -7,5 +7,10 @@ Article.find = (args, callback) => {
     mysqlPool.query(sql, args, callback(res, result));
 };
 
+Article.insert = (article, callback) => {
+    mysqlPool.beginTransaction((connection, back) => {
+
+    });
+};
 
 module.exports = Article;

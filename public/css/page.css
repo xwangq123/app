@@ -1140,6 +1140,7 @@ a.colu-xg:hover {
     width: 100%;
     text-align: center;
     padding: 20px 0 20px;
+    display: inline-block;
 }
 
 .addSortBox {
