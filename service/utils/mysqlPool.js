@@ -3,14 +3,14 @@ var mysql = require('mysql');
 var mysqlPool = module.exports;
 var _pool = null;
 
-mysqlPool.init = function () {
+mysqlPool.init = () => {
     if (!_pool) {
         _pool = mysql.createPool(config.mysql);
     }
     return mysqlPool;
 };
 
-mysqlPool.query = function (sql, args, callback) {
+mysqlPool.query = (sql, args, callback) => {
     _pool.getConnection((err, connection) => {
         if (err) {
             console.log('getConnection err!' + err);
@@ -22,37 +22,45 @@ mysqlPool.query = function (sql, args, callback) {
         });
     });
 };
-mysqlPool.beginTransaction = function (callback) {
+mysqlPool.beginTransaction = (callback) => {
     _pool.getConnection((err, connection) => {
         if (err) {
             console.log('getConnection err!' + err);
             return;
         }
         connection.beginTransaction((err) => {
-            if (err) {
-                throw err;
-            }
-            callback(connection, (err) => {
                 if (err) {
-                    connection.rollback(() => {
-                        throw err;
-                    });
+                    throw err;
                 }
-                connection.commit(function (err) {
-                    if (err) {
-                        connection.rollback(function () {
-                            throw err;
-                        });
-                    }
-                    console.log('success!');
+                callback((sql, args, callback,  isCommit,commitCallback) => {
+                    connection.query(sql, args, (err, rows) => {
+                        if (err) {
+                            connection.rollback(() => {
+                                commitCallback(err,rows);
+                            });
+                        }
+                        callback(err, rows);
+                        if (isCommit) {
+                            connection.commit((err) => {
+                                if (err) {
+                                    connection.rollback(() => {
+                                        throw err;
+                                    });
+                                }
+                                console.log('success!');
+                            });
+                            _pool.releaseConnection(connection);
+                            commitCallback(err,rows);
+                        }
+                    })
                 });
-            });
 
-        });
+            }
+        );
     });
 };
 
-mysqlPool.end = function () {
+mysqlPool.end = () => {
     if (_pool)
         _pool.end();
 };

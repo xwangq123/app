@@ -1,5 +1,3 @@
-var ue = UE.getEditor('editor');
-
 var add_category = function () {
     var category = $("#txtCategory").val().trim();
     if (category === "") {
@@ -41,7 +39,6 @@ var add_Article = function () {
     });
     //内容
     var CONTENT = UE.getEditor('editor').getContent();
-    alert(CONTENT);
     if (TITLE === '') {
         alert("内容不能为空!");
         return;
@@ -55,16 +52,20 @@ var add_Article = function () {
         CONTENT: CONTENT,
         SUMMARY: SUMMARY
     };
+    console.log(JSON.stringify(article));
     $.ajax({
         type: "POST",
         url: "/articleManage/articleInsert",
-        data: article,
+        data: {
+            article: JSON.stringify(article)
+        },
         dataType: "json",
         success: function (data) {
             if (data.errMsg) {
                 alert(data.errMsg);
                 return;
             }
+            console.log('成功');
             location.href = '/articleManage/getArticleManage';
         }
     });

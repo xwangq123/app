@@ -46,9 +46,13 @@ router.post('/articleManage/insert', (req, res) => {
 });
 
 router.post('/articleManage/articleInsert', (req, res) => {
-    Article.insert(req.body, (err, result) => {
+    Article.insert(JSON.parse(req.body.article), (err, result) => {
         response.ok(err, res, result);
     });
+});
+
+router.get('/articleManage/getArticle', (req, res) => {
+
 });
 
 module.exports = router;
